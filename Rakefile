@@ -7,5 +7,6 @@ Dotenv.load
 task :default => [:test]
 
 Rake::TestTask.new do |task|
-  task.pattern = "test/*_test.rb"
+  task.libs = ["lib", "test"]
+  task.test_files = FileList["test/*_test.rb"]
 end
