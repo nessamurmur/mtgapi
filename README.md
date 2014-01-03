@@ -1,6 +1,6 @@
 # Mtgapi
 
-TODO: Write a gem description
+Simple gem for playing with the community [Magic the Gathering API](http://mtgapi.com/)
 
 ## Installation
 
@@ -18,7 +18,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Set ENV variable
+
+```bash
+export MTG_TOKEN=token_goes_here
+```
+
+### Instantiate a client
+
+```ruby
+@client = Mtgapi::Client.new
+```
+
+### Search Cards by Title
+
+```ruby
+@client.search "Shock"
+```
 
 ## Contributing
 
