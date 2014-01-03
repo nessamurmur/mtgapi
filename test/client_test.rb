@@ -2,7 +2,7 @@ require "test_helper"
 
 class ClientTest < Minitest::Test
   def setup
-    @client = Mtgapi::Client.new(ENV['MTG_TOKEN'])
+    @client = Mtgapi::Client.new
   end
 
   def test_search_returns_array_of_results

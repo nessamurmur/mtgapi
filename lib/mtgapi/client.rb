@@ -6,7 +6,7 @@ module Mtgapi
 
     base_uri "http://mtgapi.com/api/v1/fetch"
 
-    def initialize(token)
+    def initialize(token = ENV['MTG_TOKEN'])
       @token = token
     end
 
