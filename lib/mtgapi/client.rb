@@ -18,7 +18,7 @@ module Mtgapi
 
     def find_by(attr, value)
       url = self.send("#{attr.to_s}_url", value)
-      self.class.get(url).parsed_response
+      self.class.get(url).parsed_response.map { |card| Mtgapi::Card.new(card) }
     end
 
     def id_url(id)

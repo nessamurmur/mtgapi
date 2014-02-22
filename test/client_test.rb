@@ -6,9 +6,17 @@ class ClientTest < Minitest::Test
     Mtgapi::Client.new("testtoken")
   end
 
+  def card_list
+    [{name: "TestCard"}]
+  end
+
+  def cards
+    card_list.map { |card| Mtgapi::Card.new(card) }
+  end
+
   def do_mock
     mock = Minitest::Mock.new
-    mock.expect(:parsed_response, true)
+    mock.expect(:parsed_response, card_list)
     ->(arg) { return mock }
   end
 
@@ -36,7 +44,7 @@ class ClientTest < Minitest::Test
 
   def test_find_by
     Mtgapi::Client.stub(:get, do_mock) do
-      assert client.find_by(:id, 1)
+      assert_equal cards, client.find_by(:id, 1)
     end
   end
 end
