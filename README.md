@@ -31,10 +31,16 @@ export MTG_TOKEN=token_goes_here
 @client = Mtgapi::Client.new
 ```
 
-### Search Cards by Title
+### Search Cards by Name
 
 ```ruby
-@client.search "Shock"
+@client.find_by(:name, "Shock")
+```
+
+### Fetch Cards by ID
+
+```ruby
+@client.find_by(:id, 1)
 ```
 
 ## Contributing
