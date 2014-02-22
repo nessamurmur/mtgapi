@@ -31,7 +31,7 @@ export MTG_TOKEN=token_goes_here
 @client = Mtgapi::Client.new
 ```
 
-### Search Cards by Name
+### Fetch Cards by Name
 
 ```ruby
 @client.find_by(:name, "Shock")
@@ -41,6 +41,18 @@ export MTG_TOKEN=token_goes_here
 
 ```ruby
 @client.find_by(:id, 1)
+```
+
+### Fetch Cards by Set
+
+```ruby
+@client.find_by(:set, "Alara Reborn")
+```
+
+### Fetch list of sets
+
+```ruby
+@client.sets
 ```
 
 ## Contributing

@@ -19,8 +19,18 @@ class ClientTest < Minitest::Test
     assert_equal "/card/name/test", client.name_url("test")
   end
 
+  def test_set_url
+    assert_equal "/card/set/test", client.set_url("test")
+  end
+
   def test_token_append
     assert_equal "?token=#{client.token}", client.token_append
+  end
+
+  def test_sets
+    Mtgapi::Client.stub(:get, do_return) do
+      assert_equal "/list/sets", client.sets
+    end
   end
 
   def test_find_by

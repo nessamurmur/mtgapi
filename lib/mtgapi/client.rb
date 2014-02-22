@@ -12,6 +12,10 @@ module Mtgapi
       @token = token
     end
 
+    def sets
+      self.class.get("/list/sets")
+    end
+
     def find_by(attr, value)
       url = self.send("#{attr.to_s}_url", value)
       self.class.get(url)
@@ -23,6 +27,10 @@ module Mtgapi
 
     def name_url(name)
       "/card/name/#{name}"
+    end
+
+    def set_url(set)
+      "/card/set/#{set}"
     end
 
     def token_append
