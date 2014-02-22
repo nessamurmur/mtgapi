@@ -4,7 +4,7 @@ module Mtgapi
   class Client
     include HTTParty
 
-    base_uri "http://mtgapi.com/api/v1/fetch"
+    base_uri "http://api.mtgapi.com/v1"
 
     attr_reader :token
 
@@ -12,25 +12,17 @@ module Mtgapi
       @token = token
     end
 
-    def search(search_string)
-      self.class.get(search_url(search_string))
-    end
-
     def find_by(attr, value)
-      url = "#{self.send("#{attr.to_s}_url", value)}#{token_append}"
+      url = self.send("#{attr.to_s}_url", value)
       self.class.get(url)
     end
 
     def id_url(id)
-      "card/id/#{id}"
+      "/card/id/#{id}"
     end
 
     def name_url(name)
-      "card/name/#{name}"
-    end
-
-    def search_url(search_string)
-      "/search/#{search_string}"
+      "/card/name/#{name}"
     end
 
     def token_append
