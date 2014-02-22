@@ -13,12 +13,12 @@ module Mtgapi
     end
 
     def sets
-      self.class.get("/list/sets")
+      self.class.get("/list/sets").parsed_response
     end
 
     def find_by(attr, value)
       url = self.send("#{attr.to_s}_url", value)
-      self.class.get(url)
+      self.class.get(url).parsed_response
     end
 
     def id_url(id)

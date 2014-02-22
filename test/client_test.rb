@@ -1,14 +1,15 @@
 require "test_helper"
 
 class ClientTest < Minitest::Test
-  attr_reader :client
 
-  def setup
-    @client = Mtgapi::Client.new("testtoken")
+  def client
+    Mtgapi::Client.new("testtoken")
   end
 
-  def do_return
-    ->(arg) { return arg }
+  def do_mock
+    mock = Minitest::Mock.new
+    mock.expect(:parsed_response, true)
+    ->(arg) { return mock }
   end
 
   def test_id_url
@@ -28,14 +29,14 @@ class ClientTest < Minitest::Test
   end
 
   def test_sets
-    Mtgapi::Client.stub(:get, do_return) do
-      assert_equal "/list/sets", client.sets
+    Mtgapi::Client.stub(:get, do_mock) do
+      assert client.sets
     end
   end
 
   def test_find_by
-    Mtgapi::Client.stub(:get, do_return) do
-      assert_equal "/card/id/1", client.find_by(:id, 1)
+    Mtgapi::Client.stub(:get, do_mock) do
+      assert client.find_by(:id, 1)
     end
   end
 end
