@@ -1,4 +1,5 @@
 # Mtgapi
+[![Build Status](https://travis-ci.org/niftyn8/mtgapi.png)](https://travis-ci.org/niftyn8/mtgapi)
 
 Simple gem for playing with the community [Magic the Gathering API](http://mtgapi.com/)
 
